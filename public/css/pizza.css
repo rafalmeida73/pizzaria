@@ -48,4 +48,5 @@ article li {
     text-align: center;
     font-weight: bold;
     margin: 0 150px;
+    text-transform: capitalize;
 }
