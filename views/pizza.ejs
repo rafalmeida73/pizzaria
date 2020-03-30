@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/pizza.css">
+    <title>Pizza</title>
+</head>
+
+<body>
+    <%- include('parts/head.ejs') %>
+        <h1>
+            <%= pizza.nome%>
+        </h1>
+        <h2>
+            <%= pizza.preco.toLocaleString('pt-br', { minimumFractionDigits: 2 , style: 'currency', currency: 'BRL' }) %>
+        </h2>
+
+        <main>
+            <img src="/<%=pizza.img%>" alt="<%=pizza.nome%>">
+        </main>
+
+        <article>
+            <%for (let ingrediente of pizza.ingredientes) {%>
+                <li>
+                    <%=ingrediente%>
+                </li>
+                <%}%>
+
+                    <%- include('parts/foot.ejs') %>
+        </article>
+</body>
+
+</html>
