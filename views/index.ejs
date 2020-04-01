@@ -1,24 +1,25 @@
 <%- include('parts/head',{title:'Pizzaria Fantástica'}); %>
-    <link rel="stylesheet" href="/css/index.css">
-    <form action="/pizzas/busca" method="GET" id="form-busca">
-        <input type="text" name="busca" placeholder="Qual pizza você procura?" autocomplete="off">
-        <button type="submit">Buscar</button>
-    </form>
-    <main>
-        <% for(let pizza of pizzas){ %>
-            <article>
-                <img src="<%= pizza.img %>" alt="<%= pizza.nome %>">
-                <a href="/pizzas/<%= pizza.id %>">Ver Mais</a>
+	<link rel="stylesheet" href="/css/index.css">
+	<form action="/busca" method="get">
+		<input type="text" name="q" placeholder="Qual pizza você procura?" autocomplete="off" value="<%= busca %>">
+		<button type="submit">Buscar</button>
+	</form>
 
-                <form action="/pedidos/add" method="POST">
-                    <input type="hidden" name="id" value="<%=pizza.id%>">
-                    <button>+ Add</button>
-                </form>
-                <div>
-                    <%= pizza.nome %>
-                </div>
-                <span><%= pizza.preco.toLocaleString('pt-br', { minimumFractionDigits: 2 , style: 'currency', currency: 'BRL' }) %></span>
-            </article>
-            <% } %>
-    </main>
-    <%- include('parts/foot'); %>
+	<% if(pizzas.length > 0) { %>
+
+	<main>
+		<% for(let pizza of pizzas){ %>
+		<article>
+			<img src="<%= pizza.img %>" alt="<%= pizza.nome %>">
+			<a href="/pizzas/<%= pizza.id %>">Ver Mais</a>
+			<button>+ Add</button>
+			<div><%= pizza.nome %></div>
+			<span><%= pizza.preco.toLocaleString('pt-br', { minimumFractionDigits: 2 , style: 'currency', currency: 'BRL' }) %></span>
+		</article>
+		<% } %>
+	</main>
+
+	<%} else { %>
+		<div class="pizza-nao-encontrada">Nenhuma pizza encontrada. Tente ser menos específico na sua busca.</div>
+	<% } %>
+	<%- include('parts/foot'); %>
