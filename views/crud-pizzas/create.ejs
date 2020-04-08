@@ -1,6 +1,6 @@
 <%- include('../parts/head',{title:'Pizzaria Fantástica - Editando Pizza'}); %>
 <link rel="stylesheet" href="/css/form-pizza.css">
-<form id="form-pizza" method="POST" action="/pizzas">
+<form id="form-pizza" method="POST" action="/pizzas" enctype="multipart/form-data">
 	<label>
 		Nome:
 		<input type="text" name="nome" id="nome" placeholder="Digite o nome da pizza">
@@ -22,14 +22,7 @@
 		<div>Clique para selecione nova imagem</div>
 		<input type="file" name="img" id="img">
 	</label>
-<!-- 
-	<label> 
-		Destaque: <br> 
-		<select name="destaque" id="destaque"> 
-			<option value="true" selected>Sim</option> 
-			<option value="false">Não</option> 
-		</select> 
-	</label> -->
+
 	<button type="submit">Salvar</button>
 </form>
 <%- include('../parts/foot'); %>
